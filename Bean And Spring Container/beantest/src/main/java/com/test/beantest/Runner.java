@@ -1,5 +1,6 @@
 package com.test.beantest;
 
+import com.test.beantest.bean.BeanGreetingService;
 import com.test.beantest.component.ComponentGreetingService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
@@ -9,10 +10,13 @@ import org.springframework.stereotype.Component;
 public class Runner implements CommandLineRunner {
 
     private final ComponentGreetingService componentGreetingService;
+    private final BeanGreetingService beanGreetingService;
     private final ApplicationContext ctx;
 
-    public Runner(ComponentGreetingService componentGreetingService, ApplicationContext ctx) {
+    public Runner(ComponentGreetingService componentGreetingService,
+        BeanGreetingService beanGreetingService, ApplicationContext ctx) {
         this.componentGreetingService = componentGreetingService;
+        this.beanGreetingService = beanGreetingService;
         this.ctx = ctx;
     }
 
@@ -23,5 +27,12 @@ public class Runner implements CommandLineRunner {
         System.out.println("runtime class = " + componentGreetingService.getClass());
         System.out.println("containsBean(\"componentGreetingService\") = "
             + ctx.containsBean("componentGreetingService"));
+
+        System.out.println("=== @Bean Bean ===");
+        System.out.println("instance      = " + beanGreetingService);
+        System.out.println("runtime class = " + beanGreetingService.getClass());
+        System.out.println("containsBean(\"beanGreetingService\") = "
+            + ctx.containsBean("beanGreetingService"));
+
     }
 }
