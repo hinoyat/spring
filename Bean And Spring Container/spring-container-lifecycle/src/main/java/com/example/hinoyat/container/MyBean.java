@@ -7,15 +7,16 @@ import org.springframework.stereotype.Component;
 public class MyBean {
 
     public MyBean() {
-        System.out.println("생성자: MyBean()");
+        System.out.println("[MyBean] 생성자 호출");
     }
 
     @PostConstruct
     public void init() {
-        System.out.println("@PostConstruct: MyBean.init()");
+        System.out.println("[MyBean] @PostConstruct 실행");
     }
 
     public void hello() {
-        System.out.println("hello from MyBean");
+        System.out.println("[MyBean] hello()");
     }
 }
+
